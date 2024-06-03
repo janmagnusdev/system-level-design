@@ -4,12 +4,13 @@
 void
 adder::add()
 {
+
+  s = 0;
   while( true )
   {
-    	/* ----- main loop ----- */
+    wait();
 
-  	/* ----- reset block ----- */
-    	/* ----- calculation ----- */
+    s = x + y;
   }
 
 } // adder::add()
