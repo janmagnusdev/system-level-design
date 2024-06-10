@@ -16,7 +16,7 @@ make
 ```
 
 This builds everything necessary. 
-Compile `assignment-20240527/adder` using `make`.
+Now, you can compile `assignment-20240527/adder` using `make`.
 
 You might need to run autoconf to build or1ksim, see [Build Or1ksim](#build-or1ksim).
 
