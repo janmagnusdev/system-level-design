@@ -5,7 +5,8 @@ docker run -d \
   -it \
   --entrypoint bash \
   --name my-ubuntu \
-  -v /Users/jan-magnus/personal-projects/system-level-design:/home/jan-magnus/system-level-design \
+  --cpus="4" \
+  -v /Users/jan-magnus/personal-projects/system-level-design:/home/sld/system-level-design \
   my-ubuntu
 # makes sure to attach the current shell to the containers
 # TODO: maybe this can be done directly in run command, but I'm not sure how
