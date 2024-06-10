@@ -40,7 +40,22 @@ autoreconf --install
 
 Now, running `make` in `sld-extern` should compile everything.
 
+
 # X11 forwarding on macOS and docker
+
+The Irrlicht simulation engine requires X11 for displaying its GUI. 
+Docker can forward to other X11 servers, you just need to tell it to do that.
+
+## TL;DR
+
+```bash
+open -a XQuartz
+xhost +
+docker run -e DISPLAY=docker.for.mac.host.internal:0 [your-container-here]
+```
+
+## Overview
+
 A quick guide on how to setup X11 forwarding on macOS when using docker containers requiring a DISPLAY.
 Works on both Intel and M1 macs!
 
@@ -58,6 +73,7 @@ and
 - Mac Studio (M1)
 
 ## Step-By-Step Guide
+
 
 1. Install XQuartz via brew
 
