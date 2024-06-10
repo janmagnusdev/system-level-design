@@ -1,3 +1,3 @@
 #!/bin/zsh
-docker container rm -f my-ubuntu
+docker container stop my-ubuntu && docker container rm my-ubuntu
 docker image rm my-ubuntu
