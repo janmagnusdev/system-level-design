@@ -3,12 +3,12 @@ FROM arm64v8/ubuntu
 RUN apt-get update && apt-get install -y sudo
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
 RUN sudo apt install build-essential libgl1-mesa-dev cmake libxxf86vm-dev
-sudo apt-get install libtool libtool-bin
+RUN sudo apt-get install libtool libtool-bin
 
-RUN useradd -m -d /home/jan-magnus -s /bin/bash jan-magnus && echo "jan-magnus:jan-magnus" | chpasswd && usermod -a -G sudo jan-magnus
+RUN useradd -m -d /home/sld -s /bin/bash sld && echo "sld:sld" | chpasswd && usermod -a -G sudo sld
 
 VOLUME /home/jan-magnus/system-level-design/
 
-USER jan-magnus
-WORKDIR /home/jan-magnus
+USER sld
+WORKDIR /home/sld
 CMD [ "/bin/bash" ]
