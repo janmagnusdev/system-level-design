@@ -2,3 +2,8 @@
 password-envs.sh
 sld-extern.tgz
 sld-extern
+
+# ignore c compilation targets
+assignment-20240527/**/*.o
+assignment-20240527/**/*.x
+assignment-20240527/**/*.vcd
