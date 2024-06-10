@@ -1,0 +1,3 @@
+- [ ] Use real IP address, not `docker.for.mac.host.internal`
+  - [ ] Determine dynamically, so that other systems can also use this container
+- [ ] What is needed for reproducible setup from scratch?

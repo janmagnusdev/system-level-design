@@ -1,2 +1,2 @@
 #!/bin/zsh
-docker build -t my-ubuntu .
+docker build --progress=plain -t my-ubuntu .
