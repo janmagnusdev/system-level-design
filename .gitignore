@@ -1,7 +1,6 @@
 .idea
-password-envs.sh
 sld-extern.tgz
-sld-extern
+sld-extern/
 
 # ignore c compilation targets
 assignment-20240527/**/*.o
