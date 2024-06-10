@@ -6,4 +6,5 @@
 /systemc-2.3.3.tar.gz
 /or1k-elf
 /or1k-elf_gcc4.9.3_binutils2.26_newlib2.3.0-1_gdb7.11.tgz
+/or1ksim
 autom4te.cache
