@@ -38,6 +38,7 @@ void
 accumulator::forward()
 {
   // What do we need here?
+  // TODO: Why can't we bind to the three ports and channel.write() here?
   dout = s_y_dout_channel.read();
 }
 
