@@ -7,6 +7,7 @@
 SC_MODULE( accumulator )
 {
   /* ----- input ports ----- */
+  // TODO: how to make port have 2 connections to channels?
   sc_core::sc_in<bool> clk;
   sc_core::sc_in<bool> rst;
   sc_core::sc_in<int> din;
