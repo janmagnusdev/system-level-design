@@ -7,9 +7,12 @@
 SC_MODULE( accumulator )
 {
   /* ----- input ports ----- */
+  sc_core::sc_in<bool> clk;
+  sc_core::sc_in<bool> rst;
+  sc_core::sc_in<int> din;
 
   /* ----- output ports ----- */
-
+  sc_core::sc_out<int> dout;
 
   /* ----- constructor ----- */
   SC_CTOR( accumulator );
@@ -20,8 +23,10 @@ private:
   void forward();
 
   /* ----- sub-module(s) ----- */
+  adder m_adder;
 
   /* ----- local channels ----- */
+  sc_core::sc_signal<int> s_y_dout_channel;
 
 }; // accumulator
 

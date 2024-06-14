@@ -4,6 +4,7 @@ sld-extern.tgz
 sld-extern/
 
 # ignore c compilation targets
-assignment-20240527/**/*.o
-assignment-20240527/**/*.x
-assignment-20240527/**/*.vcd
+assignment-*/**/*.o
+assignment-*/**/*.x
+assignment-*/**/*.vcd
+assignment-*/**/*.d

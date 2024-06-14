@@ -39,29 +39,30 @@ testbench::stim()
 {
   // begin with a reset phase
 
-  rst = true;
-  wait( 10, sc_core::SC_NS );
+  rst = true; // 0 @0ns
+  wait( 10, sc_core::SC_NS ); // 0 @ 10ns
   rst = false;
 
-  ch_in = 3;
+  ch_in = 3; // 3 @ 20ns
   wait( 10, sc_core::SC_NS );
 
-  ch_in = 0;
+  ch_in = 0; // 3 @ 30ns
   wait( 10, sc_core::SC_NS );
 
-  ch_in = 1;
+  ch_in = 1; // 4 @ 40, 5 @ 50, 6 @ 60ns
   wait( 30, sc_core::SC_NS );
 
-  ch_in = -1;
+  ch_in = -1; // 5 @ 70ns, 4 @ 80ns
   wait( 20, sc_core::SC_NS );
 
-  rst = true;
+  rst = true; // 0 @ 90ns
   wait( 10, sc_core::SC_NS );
   rst = false;
 
-  ch_in = 2;
+  ch_in = 2; // 2 @ 100ns
   wait( 20, sc_core::SC_NS );
 
+  wait(0 , sc_core::SC_NS);
   sc_stop();
 }
 
@@ -104,7 +105,7 @@ testbench::check()
 // global tables
 const int
 testbench::expect_table[]
-  = { 0, 0 , 3, 3, 4, 5, 6, 5, 4, 0, 2 };
+  = { 0, 0 , 3, 3, 4, 5, 6, 5, 4, 0, 2, 4, 6};
 
 const size_t
 testbench::num_stim = sizeof(expect_table)/sizeof(int);
