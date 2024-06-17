@@ -1,2 +1,0 @@
-# Bitte in folgendem Format eintragen, ein Gruppenmitglied pro Zeile:
-Name, Matrikelnummer, Fachsemester, Email
