@@ -15,13 +15,15 @@ public:
     car m_car;
     car_controller m_car_controller;
 
-    /* TODO: ----- fifo channels ----- */
+    /* ----- fifo channels ----- */
     sc_core::sc_fifo<sensor_data> fifo_car_to_controller;
     sc_core::sc_fifo<control_data> fifo_controller_to_car;
 
     /* TODO: ----- constructor ----- */
     SC_CTOR(testbench)
-    /* TODO: ----- initialiser list ----- */
+    /* ----- initialiser list ----- */
+    : m_car("m_car"),
+      m_car_controller("m_car_controller")
     {
         /* ----- port to channel binding ----- */
         // round trip of binding

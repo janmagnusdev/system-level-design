@@ -8,8 +8,10 @@ assignment_*/**/*.o
 assignment_*/**/*.x
 assignment_*/**/*.vcd
 assignment_*/**/*.d
+assignment_*/**/*.a
 
 solution_*/**/*.o
 solution_*/**/*.x
 solution_*/**/*.vcd
 solution_*/**/*.d
+solution_*/**/*.a
