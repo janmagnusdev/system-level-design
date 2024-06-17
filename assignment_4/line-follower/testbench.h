@@ -23,11 +23,12 @@ public:
     SC_CTOR(testbench)
     /* TODO: ----- initialiser list ----- */
     {
-        /* TODO: ----- port to channel binding ----- */
+        /* ----- port to channel binding ----- */
+        // round trip of binding
         m_car.sensors(fifo_car_to_controller);
         m_car_controller.sensors(fifo_car_to_controller);
         m_car_controller.control(fifo_controller_to_car);
-        m_car_controller.control(fifo_controller_to_car);
+        m_car.control(fifo_controller_to_car);
     }
 
 };
