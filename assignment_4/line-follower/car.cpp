@@ -31,11 +31,13 @@ void car::run_simulation()
             sd.sensor[i] = sensor_values[i];
 
         /* ----- write sensor data ----- */
+        sensors->write(sd); // blocking write on sensor data
 
         // create control data object
         control_data cd;
 
         /* ----- read control data ----- */
+        cd = control->read(); // blocking read on control data
 
 
         // set parameters in simulation engine

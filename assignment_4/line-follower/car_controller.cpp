@@ -22,7 +22,7 @@ void car_controller::control_process()
         car_controller_set_control_data( &sd, &cd );
 
         /* ----- write control data ----- */
-        control->write(cd);
+        control->write(cd); // blocking write on control data
 
     }
 }
