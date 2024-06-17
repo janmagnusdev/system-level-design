@@ -7,8 +7,7 @@
 # X11 addresses are described here: https://askubuntu.com/questions/432255/what-is-the-display-environment-variable
 
 # make sure to run
-# open -a XQuartz
-# xhost +
+# ```open -a XQuartz && xhost +localhost```
 # first
 
 # TODO: Create and Start instead of Run
