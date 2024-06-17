@@ -4,7 +4,7 @@
 
 int sc_main( int /* argc unused */, char* /* argv unused */[] )
 {
-  /* ----- testbench instantiation and simulation start ----- */
+  /* DONE: ----- testbench instantiation and simulation start ----- */
   // instantiate testbench and start SystemC simulation
 
   testbench testbench("testbench");

@@ -10,7 +10,7 @@ void car_controller::control_process()
     control_data cd;
     while ( true ) { // infinite loop
 
-        /* ----- read sensor data ----- */
+        /* DONE: ----- read sensor data ----- */
         sd = sensors->read(); // blocking read on sensor data
 
         std::cout << name() << "@" << sc_core::sc_time_stamp()
@@ -21,7 +21,7 @@ void car_controller::control_process()
         // calculated from it into the cd pointer
         car_controller_set_control_data( &sd, &cd );
 
-        /* ----- write control data ----- */
+        /* DONE: ----- write control data ----- */
         control->write(cd); // blocking write on control data
 
     }

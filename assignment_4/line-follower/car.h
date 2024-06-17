@@ -9,7 +9,7 @@
 SC_MODULE( car )
 {
 public:
-    /* ----- sensor and controller ports ----- */
+    /* DONE: ----- sensor and controller ports ----- */
     // out interface: .write()
     // in interface: .read()
     sc_core::sc_fifo_out<sensor_data> sensors;

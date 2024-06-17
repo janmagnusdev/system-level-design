@@ -7,14 +7,14 @@
 
 SC_MODULE( car_controller )
 {
-    /* ----- sensor and controller ports ----- */
+    /* DONE: ----- sensor and controller ports ----- */
     sc_core::sc_fifo_in<sensor_data> sensors;
     sc_core::sc_fifo_out<control_data> control;
 
     /* ----- constructor ----- */
     SC_CTOR( car_controller )
     {
-        /* ----- process definitions ----- */
+        /* DONE: ----- process definitions ----- */
         // make control_process adhere to wait() statements
         // SC_METHOD would be agnostic of wait() statements
         SC_THREAD(control_process);

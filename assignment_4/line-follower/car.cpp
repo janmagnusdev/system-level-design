@@ -6,7 +6,7 @@ car::car(sc_core::sc_module_name /* unused */)
 : sc_module()
 , e("scenery/")
 {
-    /* ----- process declaration ----- */
+    /* DONE: ----- process declaration ----- */
     SC_THREAD(run_simulation);
     set_stack_size(80000000); // increase stack size of process
 }
@@ -31,13 +31,13 @@ void car::run_simulation()
         for ( unsigned i = 0; i < NUMBER_OF_SENSORS; i++ )
             sd.sensor[i] = sensor_values[i];
 
-        /* ----- write sensor data ----- */
+        /* DONE:  ----- write sensor data ----- */
         sensors->write(sd); // blocking write on sensor data
 
         // create control data object
         control_data cd;
 
-        /* ----- read control data ----- */
+        /* DONE: ----- read control data ----- */
         cd = control->read(); // blocking read on control data
 
 
