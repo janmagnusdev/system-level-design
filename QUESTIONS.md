@@ -9,3 +9,7 @@
   - [ ] What time unit should be used for wait() in car, so for consuming e.get_timer()?
   - [ ] How is made sure that Car fires sensor data first?
   - [ ] The solution actually passes no time as well
+
+## Assignment 5, on 17.06.2024
+- [ ] Exports in Practice?
+- [ ] Why bind the module to itself with `out(*this)`?
