@@ -14,7 +14,10 @@ SC_MODULE( car_controller )
     /* ----- constructor ----- */
     SC_CTOR( car_controller )
     {
-        /* TODO: ----- process definitions ----- */
+        /* ----- process definitions ----- */
+        // make control_process adhere to wait() statements
+        // SC_METHOD would be agnostic of wait() statements
+        SC_THREAD(control_process);
     }
 
 private:
