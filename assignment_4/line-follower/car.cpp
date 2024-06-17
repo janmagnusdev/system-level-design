@@ -7,6 +7,7 @@ car::car(sc_core::sc_module_name /* unused */)
 , e("scenery/")
 {
     /* ----- process declaration ----- */
+    SC_THREAD(run_simulation);
     set_stack_size(80000000); // increase stack size of process
 }
 
