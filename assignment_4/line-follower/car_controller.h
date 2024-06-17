@@ -9,7 +9,7 @@ SC_MODULE( car_controller )
 {
     /* ----- sensor and controller ports ----- */
     sc_core::sc_fifo_in<sensor_data> sensors;
-    sc_core::sc_fifo_out<sensor_data> control;
+    sc_core::sc_fifo_out<control_data> control;
 
     /* ----- constructor ----- */
     SC_CTOR( car_controller )
