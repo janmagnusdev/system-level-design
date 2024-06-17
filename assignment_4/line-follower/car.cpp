@@ -21,7 +21,6 @@ void car::run_simulation()
             continue;
         }
 
-
         // get sensor values from engine
         const std::vector<float>& sensor_values = e.getSensors();
 
@@ -45,6 +44,9 @@ void car::run_simulation()
         e.set_movement( cd.movement );
         e.set_rotation( cd.rotation );
 
+        // why exactly do we need this here? is irrlicht engines simulation time passing
+        // during the CPP operations above?
+        wait( sc_core::sc_time(e.get_timer(), sc_core::SC_MS) );
 
 
     }
