@@ -10,15 +10,16 @@
 SC_MODULE(testbench)
 {
 public:
-    /* ----- submodules ----- */
+    /* TODO: ----- submodules ----- */
 
-    /* ----- fifo channels ----- */
 
-    /* ----- constructor ----- */
+    /* TODO: ----- fifo channels ----- */
+
+    /* TODO: ----- constructor ----- */
     SC_CTOR(testbench)
-    /* ----- initialiser list ----- */
+    /* TODO: ----- initialiser list ----- */
     {
-        /* ----- port to channel binding ----- */
+        /* TODO: ----- port to channel binding ----- */
     }
 
 };

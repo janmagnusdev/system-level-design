@@ -14,7 +14,7 @@ SC_MODULE( car_controller )
     /* ----- constructor ----- */
     SC_CTOR( car_controller )
     {
-        /* ----- process definitions ----- */
+        /* TODO: ----- process definitions ----- */
     }
 
 private:
