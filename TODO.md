@@ -7,6 +7,7 @@
 - [ ] see through CPP slides - what code comes from SystemC, and what from CPP?
 
 ## Assignments
-- [ ] Assignment 4
+- [x] Assignment 4
+  - [ ] Task 2: c) -> Tracefile 
 - [ ] Assignment 5
 - [ ] Assignment 6
