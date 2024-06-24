@@ -27,6 +27,7 @@ accumulator::accumulator( sc_core::sc_module_name /* unused */ )
   // bind channel to ports
   m_adder.y(s_y_dout_channel);
   m_adder.s(s_y_dout_channel);
+  dout(s_y_dout_channel);
 
   /* ----- process definitions ----- */
   SC_METHOD(forward);
@@ -39,6 +40,7 @@ accumulator::forward()
 {
   // What do we need here?
   // TODO: Why can't we bind to the three ports and channel.write() here?
+  s_y_dout_channel.write(s);
   dout = s_y_dout_channel.read();
 }
 
