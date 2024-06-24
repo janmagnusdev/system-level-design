@@ -25,3 +25,23 @@
       - Channels
     - Auch auf Folie Nummer 141 zu finden!
 - [ ] Why bind the module to itself with `out(*this)`?
+- [ ] Adapter vs. Transactor
+- [ ] How does UART work?
+- [ ] Warum müssen Export-Blöcke zwangsläufig an sich selbst gebindet werden, und wann spezifisch nicht?
+  - [ ] Und warum muss man das bei `Ports` nicht machen?
+
+
+## Assignments 6, on 24.06.2024
+- Für diese Zeit erstmal nur Aufgabe 1 und 2a); der Rest kommt dann später
+- [ ] Wie funktioniert TLM?
+  - VHDL, FPGAs, IP Komponenten (Bussysteme), Code Fragmente die wir selbst machen wollen
+  - Verilog und VHDL sind zu spezifisch, TLM abstrahiert vieles weg, was wir sonst nervig manuell machen müssen
+- [ ] Der RAM hat in Assignment 6 eine Breite von 16, und der Datentyp ist `unsigned`, also `unsigned int`
+  - Also haben wir einen 16 * sizeof(unsigned) Breiten RAM
+  - Die Breite der Datentypen ist dabei frei definierbar
+- 
+
+# Specific Topics for Exam
+- a
+- b
+- c

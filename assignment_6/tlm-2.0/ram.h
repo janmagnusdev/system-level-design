@@ -4,6 +4,7 @@
 #define SC_INCLUDE_DYNAMIC_PROCESSES
 
 /* FILLME: add other required include files */
+// TODO: add tlm.h as include
 
 #include <vector>
 
@@ -25,6 +26,7 @@ private:
     void report_invalid_address( unsigned addr ) const;
 
     /* FILLME: implement socket interface functions */
+    // TODO: socket interface has multiple things that are inherited, and they need to be implemented in *some* way
 
     // member variables
     std::vector<unsigned> mem;

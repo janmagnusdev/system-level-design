@@ -4,8 +4,13 @@
 #include <sstream> // std::stringstream
 
 /* FILLME: constructor implementation */
+// TODO: constructor is only defined in .h file, but we need to give it an implementation
+// TODO: Bind us to our own export?
 
 /* FILLME: b_transport implementation */
+// TODO: Interessantester Teil der Aufgabe - wie macht man das?
+// tlm_generic_payload& trans
+// trans.get_address(), trans.get_data_length(), trans.get_streaming_width() !
 
 /* FILLME: check for valid address request
  *         returns false, if address is valid,
