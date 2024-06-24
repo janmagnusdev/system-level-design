@@ -11,5 +11,17 @@
   - [ ] The solution actually passes no time as well
 
 ## Assignment 5, on 17.06.2024
-- [ ] Exports in Practice?
+- [x] Exports in Practice?
+  - Adapter, da ist immer ein Export gefragt
+  - Port Channel Port; horizontales Level
+  - Vertikale Ebene -> Exports; dieselbe Ebene also
+  - Binding von Ports/ Exports in Bezug auf Hierarchien:
+    - Ports:
+      - Ports auf höherer Ebene
+      - Channels
+      - Exports auf derselben Ebene
+    - Exports:
+      - Exports at lower hierarchy levels
+      - Channels
+    - Auch auf Folie Nummer 141 zu finden!
 - [ ] Why bind the module to itself with `out(*this)`?
