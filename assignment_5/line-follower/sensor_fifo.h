@@ -14,6 +14,10 @@ SC_MODULE(sensor_fifo)
     sc_core::sc_in< bool > reset;
 
     /* --- export declarations --- */
+    sc_core::sc_export<sc_core::sc_fifo_out_if<float> > in;
+    // out fifo is readable by third parties, so we declare it as an in export
+    // bind fifo_out to this export
+    sc_core::sc_export<sc_core::sc_fifo_in_if<sensor_data> > out;
 
     /// constructor
     SC_CTOR( sensor_fifo );
@@ -28,6 +32,10 @@ private:
     sc_dt::sc_bv<8> to_byte( float, unsigned field = 12 );
 
     /* --- sub-module(s) and channels --- */
+    // incoming float data
+    sc_core::sc_fifo<float> fifo_in;
+    // outgoing sensor data
+    sc_core::sc_fifo<sensor_data> fifo_out;
 
 
 }; // sc_module sensor_fifo
