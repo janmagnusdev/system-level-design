@@ -1,6 +1,7 @@
-# Questions for Tutor
+# Questions
 
-## Assignment 4, on 17.06.2024
+## During the Tutorium/ Course
+### Assignment 4, on 17.06.2024
 - [ ] `accumulator`
   - [ ] Why can't we bind to the three ports and channel.write() here, so that all three ports receive the data?
   - Seems like Signal Channel only supports one port on each side, i.e., two in total. 
@@ -10,7 +11,7 @@
   - [ ] How is made sure that Car fires sensor data first?
   - [ ] The solution actually passes no time as well
 
-## Assignment 5, on 17.06.2024
+### Assignment 5, on 17.06.2024
 - [x] Exports in Practice?
   - Adapter, da ist immer ein Export gefragt
   - Port Channel Port; horizontales Level
@@ -24,14 +25,16 @@
       - Exports at lower hierarchy levels
       - Channels
     - Auch auf Folie Nummer 141 zu finden!
-- [ ] Why bind the module to itself with `out(*this)`?
-- [ ] Adapter vs. Transactor
+- [x] Why bind the module to itself with `out(*this)`?
+  - required, so that the exports are connected on both sides
+  - [x] Warum müssen Export-Blöcke zwangsläufig an sich selbst gebindet werden, und wann spezifisch nicht?
+  - [x] Und warum muss man das bei `Ports` nicht machen?
+- [x] Adapter vs. Transactor
+  - transactor is a specific type of adapter, which translates higher level interfaces to lower level and vice versa
 - [ ] How does UART work?
-- [ ] Warum müssen Export-Blöcke zwangsläufig an sich selbst gebindet werden, und wann spezifisch nicht?
-  - [ ] Und warum muss man das bei `Ports` nicht machen?
 
 
-## Assignments 6, on 24.06.2024
+### Assignments 6, on 24.06.2024
 - Für diese Zeit erstmal nur Aufgabe 1 und 2a); der Rest kommt dann später
 - [ ] Wie funktioniert TLM?
   - VHDL, FPGAs, IP Komponenten (Bussysteme), Code Fragmente die wir selbst machen wollen
@@ -39,7 +42,10 @@
 - [ ] Der RAM hat in Assignment 6 eine Breite von 16, und der Datentyp ist `unsigned`, also `unsigned int`
   - Also haben wir einen 16 * sizeof(unsigned) Breiten RAM
   - Die Breite der Datentypen ist dabei frei definierbar
-- 
+
+## From working on the Exercises outside the Course
+### Assignment 5, on 17.06.2024
+- [ ] 
 
 # Specific Topics for Exam
 - a

@@ -21,6 +21,8 @@ sensor_fifo::sensor_fifo( sc_core::sc_module_name /* unused */ )
     /* --- bind local channels and sub-modules --- */
     out(fifo_out);
     in(fifo_in);
+
+    // TODO: bind exports to *this, I think that is required!
 }
 
 void sensor_fifo::forward()

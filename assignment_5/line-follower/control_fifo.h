@@ -7,15 +7,20 @@
 
 
 struct control_fifo
-/* inherit from proper interfaces */
-/* inherit from correct channel base class */
+/* DONE: inherit from proper interfaces */
+// car_controller should be abble to call .write(the_control_data) on this channel
+: public sc_core::sc_fifo_out_if<control_data>
+// car should be able to call rotation_as_float = channel.read(); movement_as_float = channel.read() (on this channel)
+// so in enables consumers to read floats, out enables producers to write control_data
+, public sc_core::sc_fifo_in_if<float>
+/* DONE: inherit from correct channel base class */
 , public sc_core::sc_prim_channel
 {
     // constructor
     control_fifo( sc_core::sc_module_name =
                   sc_core::sc_gen_unique_name("control_fifo") );
 
-    /* ---  sc_fifo_out_if< control_data > --- */
+    /* --- Methods from: sc_fifo_out_if< control_data > --- */
 
     // non-blocking
     virtual bool nb_write( control_data const & );
@@ -28,7 +33,7 @@ struct control_fifo
     virtual int num_free() const;
 
 
-    /* ---  sc_fifo_in_if< float > --- */
+    /* --- Methods from: sc_fifo_in_if< float > --- */
 
     // non-blocking
     virtual bool nb_read( float& );
@@ -42,7 +47,7 @@ struct control_fifo
     virtual int num_available() const;
 
 private:
-    /* --- sc_prim_channel --- */
+    /* --- Methods from: sc_prim_channel --- */
     virtual const char* kind() const { return "control_fifo"; }
     virtual void update();
 
