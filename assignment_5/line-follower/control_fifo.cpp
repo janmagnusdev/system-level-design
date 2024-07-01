@@ -32,6 +32,10 @@ bool control_fifo::nb_write( control_data const & data )
     // --> m_pending, m_written, m_data_written_event?
     // we would need to convert the data to floats, correct?
 
+    // TODO: set the write flag
+    // write done in the last evaluation phase
+    m_written = true;
+
     // request call to this->update() in the next update phase
     request_update();
     return true;
@@ -52,6 +56,8 @@ void control_fifo::write( control_data const & data )
 
     /* --- TODO: do the write --- */
 
+    // TODO: set write flag accordingly
+
     request_update();
 }
 
@@ -70,7 +76,6 @@ int control_fifo::num_free() const
 
 // here, we retrieve the data from the input fifo of the channel (car_controller direction)
 // and forward it to the pointer which is given
-
 bool control_fifo::nb_read( float& data )
 {
     /* --- check, if read is possible --- */
@@ -78,6 +83,11 @@ bool control_fifo::nb_read( float& data )
         return false;
 
     /* --- TODO: perform read ... --- */
+
+    // TODO: set flag
+
+    // directly modifies the value which is behind the passed reference of `data`
+    data = 0;
 
     // return `true` in case the read was successful, since this is non-blocking
     return true;
@@ -99,6 +109,7 @@ float control_fifo::read()
 
     /* --- TODO: perform read ... --- */
 
+    // TODO: set flag
 
     // FIXME: why do we return data? of what type must it be? probably the channel interface type?
     return data;
@@ -114,10 +125,19 @@ int control_fifo::num_available() const
  */
 void control_fifo::update()
 {
-    /* --- TODO: notify appropriate events --- */
+    /* --- notify appropriate events --- */
+    // What are the appropriate events? This update method is called for both read and write.
+    // --> notify the correct things based on the flags
+    if (m_read) {
+      m_data_read_event.notify();
+    }
+    if (m_written) {
+      m_data_written_event.notify();
+    }
 
-    /* --- TODO: handle flags --- */
-
+    /* --- handle flags --- */
+    m_read = false;
+    m_read = false;
 }
 
 /* ---------------------------------------------------------------

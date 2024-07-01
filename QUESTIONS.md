@@ -2,14 +2,16 @@
 
 ## During the Tutorium/ Course
 ### Assignment 4, on 17.06.2024
-- [ ] `accumulator`
-  - [ ] Why can't we bind to the three ports and channel.write() here, so that all three ports receive the data?
-  - Seems like Signal Channel only supports one port on each side, i.e., two in total. 
-    - [ ] How to make port have 2 connections to channels, or stated differently, allow channel to be connected to two ports?
-- [ ] `line-follower`
-  - [ ] What time unit should be used for wait() in car, so for consuming e.get_timer()?
-  - [ ] How is made sure that Car fires sensor data first?
-  - [ ] The solution actually passes no time as well
+- [x] `accumulator`
+  - [x] Why can't we bind to the three ports and channel.write() here, so that all three ports receive the data?
+    - Seems like Signal Channel only supports one port on each side, i.e., two in total. 
+  - [x] How to make port have 2 connections to channels, or stated differently, allow channel to be connected to two ports?
+    - prim channel with n:1 port connection, which is hard to do and is manual work
+- [x] `line-follower`
+  - [x] What time unit should be used for wait() in car, so for consuming e.get_timer()? Arbitrary
+  - [x] How is made sure that Car fires sensor data first?
+    - `car.cpp` writes data first! :-)
+    - Aus Design Sicht ergibt es völlig Sinn, hier Reihenfolgen festzulegen, damit klar ist, wer zuerst schreibt
 
 ### Assignment 5, on 17.06.2024
 - [x] Exports in Practice?
@@ -36,10 +38,10 @@
 
 ### Assignments 6, on 24.06.2024
 - Für diese Zeit erstmal nur Aufgabe 1 und 2a); der Rest kommt dann später
-- [ ] Wie funktioniert TLM?
+- [x] Wie funktioniert TLM? -> Gute Frage, muss man sich nochmal anschauen
   - VHDL, FPGAs, IP Komponenten (Bussysteme), Code Fragmente die wir selbst machen wollen
   - Verilog und VHDL sind zu spezifisch, TLM abstrahiert vieles weg, was wir sonst nervig manuell machen müssen
-- [ ] Der RAM hat in Assignment 6 eine Breite von 16, und der Datentyp ist `unsigned`, also `unsigned int`
+- [x] Der RAM hat in Assignment 6 eine Breite von 16, und der Datentyp ist `unsigned`, also `unsigned int`
   - Also haben wir einen 16 * sizeof(unsigned) Breiten RAM
   - Die Breite der Datentypen ist dabei frei definierbar, man könnte `unsigned` also durch arbitrary structs ersetzen
 
@@ -65,8 +67,9 @@
   - For the exercise, this was mostly for practicing purposes :-) you should avoid it, and use a hierarchical channel, i.e., a SystemC module
 - [x] How **can** the Synchronization be solved cleverly?
   - probably with events?
-- [ ] Why are the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
-  - what synchronization, anyway? CPP initializes them - default initilization
+- [x] Why are the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
+  - CPP has default constructors
+- [ ] what synchronization, anyway? CPP initializes them - default initilization
 
 - Note: I would not be able to do anything of this without al the comments lying around - which is quite frustrating. This is very complex, and I can barely grasp the core ideas. Maybe I should have listened more in the lectures...
 
