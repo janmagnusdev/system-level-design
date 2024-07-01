@@ -204,3 +204,10 @@ From Monday, 01. July 2024
   - (ISS) - 100% unimportant
 
 IMPORTANT: Kim also uploaded important SpecC and SLD things!
+
+Actual Exam Dates: 
+- 19.08. to 23.08.
+- First Week of September 02.09., 05.09. or 06.09. (starting later)
+- Repeating an Exam might be able at the end of September - getting ill & something like that
+- Place: Somewhere at OFFIS
+- Bring pre-filled exam form
