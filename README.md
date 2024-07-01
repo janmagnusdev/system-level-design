@@ -50,7 +50,7 @@ Docker can forward to other X11 servers, you just need to tell it to do that.
 
 ```bash
 open -a XQuartz
-xhost +
+xhost +localhost
 docker run -e DISPLAY=docker.for.mac.host.internal:0 [your-container-here]
 ```
 
