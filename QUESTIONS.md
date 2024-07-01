@@ -45,17 +45,28 @@
 
 ## From working on the Exercises outside the Course
 ### Assignment 5, on 17.06.2024
-- [ ] what does wait() (wait call without parameters) actually do?
+- [x] what does wait() (wait call without parameters) actually do?
   - in this case, it waits for the next clock cycle, since we registered forward() on the clock posedge() event
+  - Simple: static sensitivity with sensitive <<
+  - wait() (without parameters) waits for this sensitivity to occur
+  - "this has pre-defined reactive sensitivity and will always wait for the same things"
 - [ ] why do we need the `to_byte()` call?
-- [ ] module vs. prim channel
+- [x] module vs. prim channel
   - [ ] sensor_fifo was a regular SystemC module - with exports
   - [ ] control_fifo however will be a primitive channel which we will implement ourselves
   - how do sensor_fifo and control_fifo differ now, really? Why should we write control_fifo as a primitive channel, when sensor_fifo is a normal module which is just as sufficient?
-- [ ] How **can** the Synchronization be solved cleverly?
+  - Why use a prim channel, if a module suffices?
+  - if the update() phase is really needed and deferring, a primitive channel is required
+  - Hierarchical channel fifo and signal
+  - when fifo and signal don't cut it, a prim channel is needed
+  - FIFO does not work well with multiple accesses
+  - Maybe Multi-Reader or Multi-Writer FIFO - might be less work in a primitive channel
+  - Performance: Huge Simulations and Profile, that Channels take too much computing time - primitive channel is just a function call
+  - 
+- [x] How **can** the Synchronization be solved cleverly?
   - probably with events?
-  - what synchronization, anyway?
-- [ ] Why are the the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
+- [ ] Why are the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
+  - what synchronization, anyway? CPP initializes them - default initilization
 
 - Note: I would not be able to do anything of this without al the comments lying around - which is quite frustrating. This is very complex, and I can barely grasp the core ideas. Maybe I should have listened more in the lectures...
 
