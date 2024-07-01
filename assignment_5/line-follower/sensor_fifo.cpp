@@ -44,11 +44,12 @@ void sensor_fifo::forward()
 
         // read sensors
 
-        for (auto & i : sd.sensor) {
+        for (unsigned int i = 0; i < NUMBER_OF_SENSORS; ++i) {
           while(!fifo_in.num_available()) {
             wait();
           }
-          i = fifo_in.read();
+          current_float = fifo_in.read();
+          sd.sensor[i] = current_float;
         }
 
         // write to output fifo
