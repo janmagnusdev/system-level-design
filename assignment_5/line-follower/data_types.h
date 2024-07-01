@@ -5,10 +5,10 @@
 #include <systemc>
 
 // controller data
-typedef sc_dt::sc_uint<8> movement_type;
-typedef sc_dt::sc_uint<8> rotation_type;
+typedef sc_dt::sc_int<8> movement_type;
+typedef sc_dt::sc_int<8> rotation_type;
 // sensor data
-typedef sc_dt::sc_int<8> sensor_type;
+typedef sc_dt::sc_uint<8> sensor_type;
 
 
 /* ----- user defined class for sensor data ----- */
