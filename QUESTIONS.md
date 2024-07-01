@@ -70,6 +70,10 @@
 - [x] Why are the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
   - CPP has default constructors
 - [ ] what synchronization, anyway? CPP initializes them - default initilization
+- [ ] Synchronization of `car.cpp` and `car_controller.cpp`
+  - [ ] Why does `wait(10, sc_core::SC_NS)` work? 
+  - [ ] How can the synchronization be solved differently?
+  - [ ] Why is this only required in `car.cpp`, but not `car_controller.cpp`?
 
 - Note: I would not be able to do anything of this without al the comments lying around - which is quite frustrating. This is very complex, and I can barely grasp the core ideas. Maybe I should have listened more in the lectures...
 

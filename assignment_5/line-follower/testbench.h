@@ -17,7 +17,10 @@ public:
     car c;
 
     /* ----- fifo channels ----- */
+    // INFO: these are also instantiated using their default constructor! isn't that nice? :-)
+    // this is our primitive channel ( :O )
     control_fifo  cd;
+    // and this the hierarchical channel
     sensor_fifo   sd;
 
     /* ----- constructor ----- */
@@ -27,7 +30,7 @@ public:
     , c( "car" )
     , cd("cd_fifo")
     , sd("sd_fifo")
-    , clock( "clock", 10, sc_core::SC_NS )
+    , clock( "clock", 100, sc_core::SC_NS )
     , reset("reset")
     {
         /* ----- port to channel binding ----- */

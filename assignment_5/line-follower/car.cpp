@@ -2,15 +2,6 @@
 
 #include <systemc>
 
-car::car(sc_core::sc_module_name /* unused */)
-: sc_module()
-, e("scenery/")
-{
-    /* ----- process declaration ----- */
-    SC_THREAD(run_simulation);
-    set_stack_size(80000000); // increase stack size of process
-}
-
 void car::run_simulation()
 {
     e.init(); // initialise simulation engine
@@ -31,11 +22,20 @@ void car::run_simulation()
         for (unsigned i = 0; i < NUMBER_OF_SENSORS; i++)
             sensors.write( sensor_values[i] );
 
+        std::cout << name() << "@" << sc_core::sc_time_stamp()
+            << " : wrote sensors"
+            << "\n";
 
         float cd[2];
 
-        for ( unsigned i = 0; i < 2; i++ )
-            cd[i] = control.read();
+        for ( unsigned i = 0; i < 2; i++ ) {
+          while (!control.nb_read(cd[i])) {
+            std::cout << name() << "@" << sc_core::sc_time_stamp()
+                      << " : waiting"
+                      << std::endl;
+            wait(control.data_written_event());
+          };
+        }
 
         std::cout << name() << "@" << sc_core::sc_time_stamp()
             << " : received control data = "

@@ -24,15 +24,30 @@ bool control_fifo::nb_write( control_data const & data )
     if ( !num_free() )
         return false;
 
-    /* --- TODO: do the write --- */
-    // TODO: we need to call to_float() once with field = 2, once with field = 1; and then, use the returned floats in a meaningful way
-    // What needs to be written?
-    // we have some flags, maybe they can be used?
-    // we want to write, so m_buffer is probably not needed
-    // --> m_pending, m_written, m_data_written_event?
-    // we would need to convert the data to floats, correct?
+    /* --- DONE: do the write --- */
+    // --> m_pending, but not m_written & m_data_written_event
+    // --> m_written is the flag that is used to publish m_data_written_event in the next update() cycle()
 
-    // TODO: set the write flag
+
+    // === what to write, anyway? the data?
+    // store data in buffer so that to_float() has access to it implicitly. weird C stuff...
+    m_buffer = data;
+
+    // no need to convert to float here, we do that on read
+    // float rotation_float = to_float(1);
+    //float movement_float = to_float(2);
+
+    m_pending = 2;
+
+
+    // === where to write it?
+    // --> this is the controller to car direction. the controller writes some data which the car should consume.
+    //     so, this should be written to the other direction.
+    // --> writing is basically just storing the thing in the channel, until someone tries to read it.
+    //     not much else to do.
+
+
+    // DONE: set the write flag
     // write done in the last evaluation phase
     m_written = true;
 
@@ -76,20 +91,37 @@ int control_fifo::num_free() const
 
 // here, we retrieve the data from the input fifo of the channel (car_controller direction)
 // and forward it to the pointer which is given
+// only one data is read at a time - but which is first? car.cpp should have the answer to that
+// movement first, rotation second
 bool control_fifo::nb_read( float& data )
 {
     /* --- check, if read is possible --- */
     if(!num_available())
         return false;
 
-    /* --- TODO: perform read ... --- */
+//    /* --- perform read ... --- */
+//
+//    int field_to_read;
+//    if (m_pending <= static_cast<unsigned int>(std::numeric_limits<int>::max()) && m_pending >= 0) {
+//      field_to_read = static_cast<int>(m_pending);
+//    } else {
+//      sc_assert( false && "Error: The unsigned value is too large or too small to fit in an int." );
+//    }
+//
+//    // m_buffer is filled from write
+//    data = to_float(field_to_read);
+//
+//    // DONE: set flag
+//    m_read = true;
+//    if (m_pending > 0 ) m_pending--;
+//    // DONE: request update
+//    request_update();
 
-    // TODO: set flag
+    /* --- perform read ... --- */
+    data   = to_float( m_pending-- );
+    m_read = true;
+    request_update();
 
-    // directly modifies the value which is behind the passed reference of `data`
-    data = 0;
-
-    // return `true` in case the read was successful, since this is non-blocking
     return true;
 }
 
@@ -112,9 +144,11 @@ float control_fifo::read()
     // TODO: set flag
 
     // FIXME: why do we return data? of what type must it be? probably the channel interface type?
-    return data;
+    return 0.f;
 }
 
+// returns true ( > 0) if m_pending
+// returns false (==0) if not m_pending
 int control_fifo::num_available() const
 {
     return m_pending;
@@ -126,13 +160,12 @@ int control_fifo::num_available() const
 void control_fifo::update()
 {
     /* --- notify appropriate events --- */
-    // What are the appropriate events? This update method is called for both read and write.
-    // --> notify the correct things based on the flags
+    // --> notify the correct things based on the flags. read() and write() must set the flags correctly.
     if (m_read) {
-      m_data_read_event.notify();
+      m_data_read_event.notify(sc_core::SC_ZERO_TIME);
     }
     if (m_written) {
-      m_data_written_event.notify();
+      m_data_written_event.notify(sc_core::SC_ZERO_TIME);
     }
 
     /* --- handle flags --- */

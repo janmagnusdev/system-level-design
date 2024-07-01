@@ -23,8 +23,16 @@ void car_controller::control_process()
         car_controller_set_control_data( &sd, &cd );
 
         /* ----- write control data ----- */
-        control->write(cd); // write control data to control fifo port
+        while(!control->nb_write(cd)) {
+          std::cout << name() << "@" << sc_core::sc_time_stamp()
+                    << " : waiting"
+                    << std::endl;
+          wait(control.data_read_event());
+        };
 
+      std::cout << name() << "@" << sc_core::sc_time_stamp()
+                << " : wrote control data = " << cd
+                << std::endl;
     }
 }
 /* vim: set ts=4 sw=4 tw=72 et :*/

@@ -21,41 +21,39 @@ sensor_fifo::sensor_fifo( sc_core::sc_module_name /* unused */ )
     /* --- bind local channels and sub-modules --- */
     out(fifo_out);
     in(fifo_in);
-
-    // TODO: bind exports to *this, I think that is required!
 }
 
 void sensor_fifo::forward()
 {
-    while ( true ) {
-        sensor_data sd;
-        float current_float;
+    while (true) {
+      sensor_data sd;
+      float current_float;
 
-        // read movement
-        // 0 is false, >= 1 is true
-        // num_free == 0 -> no more writeable
-        // num_available == 0 -> no more readable
-        // for non-blocking, we must check ourselves if we can write/ read or not
-        // however, here we are not blocking - but we check nonetheless if there is available data at all
-        while (!fifo_in.num_available()) {
-          // wait(); is static sensitivity - continues from here until next clock cycle, in this SC_CTHREAD case
+      std::cout << name() << "@" << sc_core::sc_time_stamp()
+                << " : forwarding!"
+                << std::endl;
+
+      // read movement
+      while (!fifo_in.num_available()) {
+        // wait(); is static sensitivity - continues from here until next clock cycle, in this SC_CTHREAD case
+        wait();
+      }
+      // FIXME: why do we need this to_byte call?
+      sd.movement = to_byte(fifo_in.read());
+
+      // read sensors
+
+      for (unsigned int i = 0; i < NUMBER_OF_SENSORS; i++) {
+        while(!fifo_in.num_available()) {
           wait();
         }
-        // FIXME: why do we need this to_byte call?
-        sd.movement = to_byte(fifo_in.read());
+        sd.sensor[i] = to_byte(fifo_in.read(), i);
+      }
 
-        // read sensors
-
-        for (unsigned int i = 0; i < NUMBER_OF_SENSORS; ++i) {
-          while(!fifo_in.num_available()) {
-            wait();
-          }
-          current_float = fifo_in.read();
-          sd.sensor[i] = current_float;
-        }
-
-        // write to output fifo
-        fifo_out.write(sd);
+      // write to output fifo
+      while ( !fifo_out.nb_write(sd) ) {
+        wait();
+      }
     }
 }
 

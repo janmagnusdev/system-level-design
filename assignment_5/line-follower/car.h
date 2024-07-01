@@ -14,9 +14,15 @@ public:
     sc_core::sc_fifo_in<float>  control;
 
     /* ----- alternate constructor declaration ---- */
-    SC_HAS_PROCESS( car );
-    car( sc_core::sc_module_name =
-         sc_core::sc_gen_unique_name("car") );
+    SC_CTOR( car )
+    : sc_module()
+    , e("scenery/")
+    {
+
+      /* ----- process declaration ----- */
+      SC_THREAD(run_simulation);
+      set_stack_size(80000000); // increase stack size of process
+    }
 
 private:
     /* ----- process ---- */
