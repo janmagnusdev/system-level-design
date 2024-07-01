@@ -99,27 +99,22 @@ bool control_fifo::nb_read( float& data )
     if(!num_available())
         return false;
 
-//    /* --- perform read ... --- */
-//
-//    int field_to_read;
-//    if (m_pending <= static_cast<unsigned int>(std::numeric_limits<int>::max()) && m_pending >= 0) {
-//      field_to_read = static_cast<int>(m_pending);
-//    } else {
-//      sc_assert( false && "Error: The unsigned value is too large or too small to fit in an int." );
-//    }
-//
-//    // m_buffer is filled from write
-//    data = to_float(field_to_read);
-//
-//    // DONE: set flag
-//    m_read = true;
-//    if (m_pending > 0 ) m_pending--;
-//    // DONE: request update
-//    request_update();
-
     /* --- perform read ... --- */
-    data   = to_float( m_pending-- );
+
+    int field_to_read;
+    if (m_pending <= static_cast<unsigned int>(std::numeric_limits<int>::max()) && m_pending >= 0) {
+      field_to_read = static_cast<int>(m_pending);
+    } else {
+      sc_assert( false && "Error: The unsigned value is too large or too small to fit in an int." );
+    }
+
+    // m_buffer is filled from write
+    data = to_float(field_to_read);
+
+    // DONE: set flag
     m_read = true;
+    if (m_pending > 0 ) m_pending--;
+    // DONE: request update
     request_update();
 
     return true;

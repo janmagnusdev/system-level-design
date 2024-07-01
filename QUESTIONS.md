@@ -72,8 +72,14 @@
 - [ ] what synchronization, anyway? CPP initializes them - default initilization
 - [ ] Synchronization of `car.cpp` and `car_controller.cpp`
   - [ ] Why does `wait(10, sc_core::SC_NS)` work? 
-  - [ ] How can the synchronization be solved differently?
+    - because `wait()` without a sensitivity list **can't** work. It will just wait indefinitely then.
+    - better would be to wait for an event, like `wait(control.data_written_event())`.
+    - Using explicit time, we advance the simulation a bit, which is why it works. But it is quite random.
+  - [x] How can the synchronization be solved differently?
+    - Using wait statements with explicit time
+    - Declaring sensitivity list, but that would require more ports, that change when the data is ready
   - [ ] Why is this only required in `car.cpp`, but not `car_controller.cpp`?
+    - I have no idea. But I guess it would have worked the same if we would have only put it in `car_controller.cpp`.
 
 - Note: I would not be able to do anything of this without al the comments lying around - which is quite frustrating. This is very complex, and I can barely grasp the core ideas. Maybe I should have listened more in the lectures...
 
