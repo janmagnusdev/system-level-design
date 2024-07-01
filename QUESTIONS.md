@@ -62,7 +62,7 @@
   - FIFO does not work well with multiple accesses
   - Maybe Multi-Reader or Multi-Writer FIFO - might be less work in a primitive channel
   - Performance: Huge Simulations and Profile, that Channels take too much computing time - primitive channel is just a function call
-  - 
+  - For the exercise, this was mostly for practicing purposes :-) you should avoid it, and use a hierarchical channel, i.e., a SystemC module
 - [x] How **can** the Synchronization be solved cleverly?
   - probably with events?
 - [ ] Why are the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
