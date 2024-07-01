@@ -143,3 +143,64 @@ From Monday, 01. July 2024
   - Hierarchical Connections - Good Diagram! Explain all this using this diagram. Everything is in there.
     - Remove all the text - infer what is an export and what is a port, by direction of the arrow.
   - m:1, 1:n connections fact is interesting, but not relevant here - only at TLM its important
+  - Primitive Channel - how does it use the update mechanism? Have a rough description of that
+  - Done with basic SystemC - Data Types not important, much more interesting things to ask
+- Lecture 12 - TLM Part 1
+  - Map first half of lecture to second half - how are they connected? Talk about that here.
+    - If I don't know it, say it, and skip to talk about things that I do know
+  - SystemC Modelling Levels
+    - Functional View, PV, Architecture View, etc.
+    - Bus Protocol not needed - we don't do Bit-accurate things
+    - We have TLM to avoid talking about this
+    - TLM has a Payload, which is configured for the different Features
+  - Aspects to be Modelled
+    - Nice facts where we can think about
+  - Transactions
+    - Backwards path! Really important and there is an important usecase for that!
+  - Socket
+    - Initiator & Target Socket
+    - Socket is Combination of Export & Port - Port for Forward Path, Export for Backward Path
+  - Technically Speaking TLMs are Hierarchical Channels
+  - Master - provide and require an Interface
+  - Slave - e.g. RAM
+  - Different kinds of sockets and various ways of using them!
+    - Convenience Sockets - Table! What are their features?
+    - Explain these facts and the rules - when would you use one or the other?
+  - Basic Functionality
+    - Direct Connection
+    - Talk to the other end
+    - Evolution of this system
+    - Direct Binding - needs no channel 1:1
+  - Typical Diagram: Multiple Slaves and Masters
+    - (Multi Passthrough Target Socket)
+    - Roles of Initiator and Targets
+    - Multi-Sockets visually distinguishable
+  - Timing: How do we get timing into our Bus Model?
+    - Exclusion
+    - Arbiter - Cycle Accurate for certain types of Busses
+      - Different Arbitration Algorithms
+      - Work only together with seperate arbitration process
+    - How works exactly is not important
+    - Exchange and Evolution - Change Parts and test
+    - Comparison of TLM Views! Diagram - Nothing explains this better than this diagram. Important!
+  - Blocking vs. Non-Blocking Transactions
+    - Being aware, that it is present
+    - Having multiple phases
+    - Ideally: Why do we need multiple phases?!
+    - Advanced Features of Busses
+  - Cross Bar Bus Topology
+    - Not important
+    - Seperates Routing from Arbitration
+    - Don't care about being able to draw
+- Lecture 13 - TLM Part 2
+- Lecture 14 - Software Refinement in SystemC
+  - From OSI to System Model
+    - What would this be in SpecC?
+    - Refinement through models
+    - We can do the modelling of the first part with SystemC, because SystemC has those tools!
+  - Introduce Routers and Multiplexers
+    - Explain the diagram - what is going on here?
+    - What did we do, to get our Refinement Process done?
+  - (ISS) - 100% unimportant
+
+IMPORTANT: Kim also uploaded important SpecC and SLD things!
