@@ -41,13 +41,25 @@
   - Verilog und VHDL sind zu spezifisch, TLM abstrahiert vieles weg, was wir sonst nervig manuell machen müssen
 - [ ] Der RAM hat in Assignment 6 eine Breite von 16, und der Datentyp ist `unsigned`, also `unsigned int`
   - Also haben wir einen 16 * sizeof(unsigned) Breiten RAM
-  - Die Breite der Datentypen ist dabei frei definierbar
+  - Die Breite der Datentypen ist dabei frei definierbar, man könnte `unsigned` also durch arbitrary structs ersetzen
 
 ## From working on the Exercises outside the Course
 ### Assignment 5, on 17.06.2024
-- [ ] 
+- [ ] what does wait() (wait call without parameters) actually do?
+  - in this case, it waits for the next clock cycle, since we registered forward() on the clock posedge() event
+- [ ] why do we need the to_byte() call?
+- [ ] module vs. prim channel
+  - [ ] sensor_fifo was a regular SystemC module - with exports
+  - [ ] control_fifo however will be a primitive channel which we will implement ourselves
+  - how do sensor_fifo and control_fifo differ now, really? Why should we write control_fifo as a primitive channel, when sensor_fifo is a normal module which is just as sufficient?
+- [ ] How **can** the Synchronization be solved cleverly?
+  - probably with events?
+  - what synchronization, anyway?
+- [ ] Why are the the local events like `sc_core::sc_event m_data_written_event;` not initialised somewhere? does SystemC do it automatically?
 
-# Specific Topics for Exam
+- Note: I would not be able to do anything of this without al the comments lying around - which is quite frustrating. This is very complex, and I can barely grasp the core ideas. Maybe I should have listened more in the lectures...
+
+# Important Topics for Exam
 - a
 - b
 - c
