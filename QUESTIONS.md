@@ -47,7 +47,7 @@
 ### Assignment 5, on 17.06.2024
 - [ ] what does wait() (wait call without parameters) actually do?
   - in this case, it waits for the next clock cycle, since we registered forward() on the clock posedge() event
-- [ ] why do we need the to_byte() call?
+- [ ] why do we need the `to_byte()` call?
 - [ ] module vs. prim channel
   - [ ] sensor_fifo was a regular SystemC module - with exports
   - [ ] control_fifo however will be a primitive channel which we will implement ourselves
@@ -59,7 +59,87 @@
 
 - Note: I would not be able to do anything of this without al the comments lying around - which is quite frustrating. This is very complex, and I can barely grasp the core ideas. Maybe I should have listened more in the lectures...
 
-# Important Topics for Exam
-- a
-- b
-- c
+# Important Topics for Exam!
+From Monday, 01. July 2024
+
+- Lecture 9 - most important part
+  - Fundamental Concepts
+    - Visual Language - using Diagrams, be able to read them and (optionally) write them yourselves!
+      - Draw up a sketch
+    - Not asking about Code
+  - Processes
+    - `SC_METHOD` vs `SC_THREAD` vs `SC_CTHREAD`
+      - When can we use `wait()`, when not?
+      - List difference
+      - Explain them
+      - Situations to use one of them - what you can and could do with them
+      - static vs. dynamic sensitivity
+      - Why (does this exist? what do we use it for?) -> If I know an answer to that, it will be fine.
+    - (Running a Simulation - Implementation)
+      - More or less not relevant!
+      - (Testbench Idea)
+      - (Artificial Generation of Stimuli)
+      - All of this is very general and not special to SLD
+      - (Waveform trace)
+    - Channels!
+      - We use them a lot!
+      - Types:
+        - Important: sc_signal!, sc_buffer!, sc_fifo!
+        - Possible: sc_semaphore, sc_mutex
+        - (sc_clock) -> not really relevant
+      - `SC_METHOD` can't use blocking calls - non-blocking calls must be used, which are *harder* to use!
+    - Synchronization via Events
+      - Vanishing Events! -> nobody listening currently, event disappears
+    - Time in SystemC - VERY important
+      - Types of Events: Immediate, Delta, Timed, Cancelling
+      - Multiple Notifications - how do they cancel each other?
+        - One of the most important slides!
+      - Sensitivity and Dynamic - specify, but no explanation required
+    - Aware, that different Accessors exist for different Contexts
+    - SystemC Phases - VERY IMPORTANT
+      - Elaboration, Initialization, Simulation!
+      - Simulation Cycle/ Event-Driven Simulation! 
+        - R, D and T sets
+        - When does the simulation end?
+      - Draw the diagram by hand & explain!
+    - Evaluate/ Update Mechanism
+      - Why are these needed? Why do they exist?
+      - Concurrent Hardware, which runs at the same time
+      - Is supposed to do everything simultaneously - one process after the other
+      - This mechanism is there to pretend that they are running at the same time
+      - Excellent question for better grades!
+  - Losing time here is just plain bad. Having enough time to explain more - not having to think about this is important.
+  - Learn principles, deduce the facts from the principles. But this lecture is required to **just know**.
+- (Lecture 10 - CPP)
+- Lecture 11 - (Data Types), Interfaces, Channels, Adapters
+  - Data Types interesting, but specific; not as relevant
+    - Resolution Table is important - X and Z state
+  - SystemC Communication Concept!
+    - Lecture 9 - Identify and name ports; but not further
+    - Here, more about the mechanisms behind it
+    - "This interface must match this interface"
+    - "During Elaboration, this port must be bound to a channel"
+  - Hierarchical Channels vs. Primitive Channels! Minimal Channels
+    - Examples, where one is better than the other?
+    - Interfaces
+      - in and out
+      - blocking and non-blocking
+      - rest is not relevant
+  - Putting It All Together Diagram
+    - What happens between and in all these Elements?
+    - Explain Mechanisms
+    - No exact code - only principles
+  - Idea of Adapters and Transactors
+    - Good Opportunity to relate SystemC to first part of lecture
+    - Step by Step to get to the target system
+  - Exports
+    - Closely linked to hierarchical Channels
+    - They only make sense when using hierarchical Channels
+      - So I must learn those first
+    - Boundary of official interface
+    - Export FIFO itself can break assumptions - seperate code from behaviour
+    - Channel -> Exports
+    - Modules -> Ports
+  - Hierarchical Connections - Good Diagram! Explain all this using this diagram. Everything is in there.
+    - Remove all the text - infer what is an export and what is a port, by direction of the arrow.
+  - m:1, 1:n connections fact is interesting, but not relevant here - only at TLM its important
